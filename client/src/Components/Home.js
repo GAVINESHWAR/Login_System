@@ -57,16 +57,21 @@ function Home() {
 
   const fetchCars = () => {
     axios
-      .get("http://localhost:3001/cars", { withCredentials: true })
+      .get("https://login-system-co3h.onrender.com/cars", {
+        withCredentials: true,
+      })
       .then((response) => setCars(response.data.cars))
       .catch((error) => console.error("Error fetching cars:", error));
   };
 
   const handleSearch = () => {
     axios
-      .get(`http://localhost:3001/cars/search?q=${searchKeyword}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://login-system-co3h.onrender.com/cars/search?q=${searchKeyword}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) => setCars(response.data.cars))
       .catch((error) => console.error("Error searching cars:", error));
   };
@@ -82,7 +87,9 @@ function Home() {
     );
 
     axios
-      .post("http://localhost:3001/cars", formData, { withCredentials: true })
+      .post("https://login-system-co3h.onrender.com/cars", formData, {
+        withCredentials: true,
+      })
       .then(() => {
         alert("Car added successfully!");
         setIsAdding(false);
