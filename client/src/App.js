@@ -10,15 +10,18 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-      axios.get('http://localhost:3001/user', { withCredentials: true })
-          .then(response => {
-              if (response.data.user) {
-                  setIsLoggedIn(true);
-              } else {
-                  setIsLoggedIn(false);
-              }
-          })
-          .catch(() => setIsLoggedIn(false));
+      axios
+        .get("https://login-system-co3h.onrender.com/user", {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.data.user) {
+            setIsLoggedIn(true);
+          } else {
+            setIsLoggedIn(false);
+          }
+        })
+        .catch(() => setIsLoggedIn(false));
   }, []);
 
   return (

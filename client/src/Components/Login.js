@@ -10,21 +10,29 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3001/login", { email, password }, { withCredentials: true })
-            .then(result => {
-                if (result.data === "Success") {
-                    axios.get('http://localhost:3001/user', { withCredentials: true })
-                        .then(response => {
-                            if (response.data.user) {
-                              setIsLoggedIn(true);
-                              navigate("/home", { state: { user: response.data.user } });
-                            }
-                        });
-                } else {
-                    alert("Login failed");
-                }
-            })
-            .catch(err => console.log(err));
+        axios
+          .post(
+            "https://login-system-co3h.onrender.com/login",
+            { email, password },
+            { withCredentials: true }
+          )
+          .then((result) => {
+            if (result.data === "Success") {
+              axios
+                .get("https://login-system-co3h.onrender.com/user", {
+                  withCredentials: true,
+                })
+                .then((response) => {
+                  if (response.data.user) {
+                    setIsLoggedIn(true);
+                    navigate("/home", { state: { user: response.data.user } });
+                  }
+                });
+            } else {
+              alert("Login failed");
+            }
+          })
+          .catch((err) => console.log(err));
     };
 
     const paperStyle = { padding: "2rem", margin: "100px auto", borderRadius: "1rem", boxShadow: "10px 10px 10px" };
