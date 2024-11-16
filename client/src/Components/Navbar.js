@@ -12,7 +12,7 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
             <AppBar sx={{ bgcolor: '#333' }}>
                 <Toolbar>
                     <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                        Tech Coffee Break
+                        Welcome to Spyne.ai
                     </Typography>
                     {!isLoggedIn ? (
                         <>
